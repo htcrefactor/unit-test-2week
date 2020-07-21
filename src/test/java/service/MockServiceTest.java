@@ -34,10 +34,17 @@ public class MockServiceTest {
         //champion.getName()을 호출하면 "카이사"를 리턴한다.
         when(champion.getName()).thenReturn("카이사");
         assertThat(champion.getName(), is("카이사"));
+        System.out.println("Champion : " + champion.getName());
     }
 
     // 1. when, thenReturn을 사용하여 어떠한 챔피언 이름을 입력해도 베인을 리턴하도록 테스트하세요
-
+    @Test
+    public void 챔피언이름을입력하면_무조건_베인을_리턴한다() {
+        Champion champion = mock(Champion.class);
+        when(champion.getName()).thenReturn("베인");
+        assertThat(champion.getName(), is("베인"));
+        System.out.println("Champion : " + champion.getName());
+    }
 
     // 2. 챔피언 이름으로 야스오를 저장하면, doThrow를 사용하여 Exception이 발생하도록 테스트 하세요.
 
