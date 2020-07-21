@@ -318,7 +318,21 @@ public class MockServiceTest {
 
 
     }
-    
+
+    // Solution
+    @Test
+    public void testConfirmCountWhenGetChampionList() {
+        List<Champion> champions = new ArrayList<Champion>();
+
+        champions.add((new Champion("루시안", "바텀", 5)));
+        champions.add((new Champion("유미", "서폿", 3)));
+        champions.add((new Champion("애쉬", "바텀", 6)));
+
+        when(mockService.findAllChampions()).thenReturn(champions);
+        assertThat(mockService.findAllChampions().size(), is(3));
+        verify(mockRepository, times(1)).findAll();
+    }
+
 
     // 3. 챔피언을 검색하면 가짜 챔피언 객체를 리턴하고, mockRepository의 해당 메소드가 1번 호출되었는지를 검증하고, 그 객체의 스킨 개수가
     //    맞는지 확인하는 테스트코드를 작성하세요.
