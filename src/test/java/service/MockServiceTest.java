@@ -266,17 +266,31 @@ public class MockServiceTest {
 
     }
 
-    // 1. 리산드라라는 챔피언 이름으로 검색하면 미드라는 포지션과 함께 가짜 객체를 리턴받고, 포지션이 탑이 맞는지를 테스트하세요
+    // 1. 리산드라라는 챔피언 이름으로 검색하면 미드라는 포지션과 함께 가짜 객체를 리턴받고, 포지션이 미드가 맞는지를 테스트하세요
     // My Answer
     @Test
     public void MockMidLaneChampionDetailsWhenSearchLissandraAndTestIfTopLaner() {
         when(mockService.findByName("리산드라")).thenReturn(new Champion("사실은 니코인 리산드라", "미드", 4));
         Champion champion = mockService.findByName("리산드라");
-        assertThat(champion.getPosition(), is("탑"));
+        assertThat(champion.getPosition(), is("미드"));
     }
 
+    // Solution for checking if Mid laner
+    @Test
+    public void shouldPositionIsMidForFindByNameLissandra() {
+        when(mockService.findByName("리산드라")).thenReturn(new Champion("리산드라", "미드", 5));
+        assertThat(mockService.findByName("리산드라").getPosition(), is("미드"));
+    }
+
+    // Solution for checking if champion has 5 skins
+    @Test
+    public void shouldSkinCountIs5ForFindByNameLissandra() {
+        when(mockService.findByName("리산드라")).thenReturn(new Champion("리산드라", "미드", 5));
+        assertThat(mockService.findByName("리산드라").getHasSkinCount(), is(5));
+    }
 
     // 2. 2개 이상의 챔피언을 List로 만들어 전체 챔피언을 가져오는 메소드 호출시 그 갯수가 맞는지 확인하는 테스트 코드를 작성하세요.
+
 
     // 3. 챔피언을 검색하면 가짜 챔피언 객체를 리턴하고, mockRepository의 해당 메소드가 1번 호출되었는지를 검증하고, 그 객체의 스킨 개수가
     //    맞는지 확인하는 테스트코드를 작성하세요.
