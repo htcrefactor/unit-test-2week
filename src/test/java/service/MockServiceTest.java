@@ -38,6 +38,7 @@ public class MockServiceTest {
     }
 
     // 1. when, thenReturn을 사용하여 어떠한 챔피언 이름을 입력해도 베인을 리턴하도록 테스트하세요
+
     /*
     // My Answer
     @Test
@@ -67,6 +68,7 @@ public class MockServiceTest {
 
 
     // 2. 챔피언 이름으로 야스오를 저장하면, doThrow를 사용하여 Exception이 발생하도록 테스트 하세요.
+
     /*
     // My Answer
     @Test
@@ -79,6 +81,14 @@ public class MockServiceTest {
     }
      */
 
+    // Solution
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldExceptionWhenSetNameYasuo() {
+        Champion champion = mock(Champion.class);
+        doThrow(new IllegalArgumentException()).when(champion).setName("야스오");
+        champion.setName("야스오");
+
+    }
 
     // 3. verify 를 사용하여 '미드' 포지션을 저장하는 프로세스가 진행되었는지 테스트 하세요.
 
