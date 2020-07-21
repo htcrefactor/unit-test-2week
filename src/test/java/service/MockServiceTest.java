@@ -254,13 +254,27 @@ public class MockServiceTest {
 
     @Test
     public void 챔피언정보들을Mocking하고Service메소드호출테스트() {
+        // when(mockService.findByName(anyString())).thenReturn(new Champion("루시안", "바텀", 5));
+        // String championName = mockService.findByName("애쉬").getName();
+        // assertThat(championName, is("루시안"));
+        // verify(mockRepository, times(1)).findByName(anyString());
+
         when(mockService.findByName(anyString())).thenReturn(new Champion("루시안", "바텀", 5));
         String championName = mockService.findByName("애쉬").getName();
         assertThat(championName, is("루시안"));
         verify(mockRepository, times(1)).findByName(anyString());
+
     }
 
     // 1. 리산드라라는 챔피언 이름으로 검색하면 미드라는 포지션과 함께 가짜 객체를 리턴받고, 포지션이 탑이 맞는지를 테스트하세요
+    // My Answer
+    @Test
+    public void MockMidLaneChampionDetailsWhenSearchLissandraAndTestIfTopLaner() {
+        when(mockService.findByName("리산드라")).thenReturn(new Champion("사실은 니코인 리산드라", "미드", 4));
+        Champion champion = mockService.findByName("리산드라");
+        assertThat(champion.getPosition(), is("탑"));
+    }
+
 
     // 2. 2개 이상의 챔피언을 List로 만들어 전체 챔피언을 가져오는 메소드 호출시 그 갯수가 맞는지 확인하는 테스트 코드를 작성하세요.
 
