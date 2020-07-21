@@ -218,6 +218,22 @@ public class MockServiceTest {
         //verify(champion, never()).setName("");
     }
 
+    // Solution
+    @Test
+    public void shouldNeverInvocationWhenChampionSetName() {
+        Champion champion = mock(Champion.class);
+        champion.setName("아지르");
+        champion.setPosition("미드");
+        champion.setHasSkinCount(3);
+
+        // This passes the test because setName("아지르") is not setName("직스")
+        // This works unintentionally because champion.setName() has been invoked but may pass the test.
+        // verify(champion, never()).setName("직스");
+
+        // This is correct because setName("아지르") is a subset of possible setName(anyString()).
+        verify(champion, never()).setName(anyString())
+    }
+
     // 4-4. champion 객체에서 이름을 가져오는 로직이 200ms 시간 이내에 1번 실행되었는 지 검증하는 로직을 작성하세요.
 
 
