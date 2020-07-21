@@ -167,6 +167,7 @@ public class MockServiceTest {
     }
 
     // 4-2. champion 객체에서 이름을 가져오는 로직이 최대 3번 이하 실행되면 Pass 하는 로직을 작성하세요.
+    // My Answer
     @Test
     public void shouldMaxThreeTimesInvocationForGetChampionName() {
         Champion champion = mock(Champion.class);
@@ -185,7 +186,37 @@ public class MockServiceTest {
         verify(champion, atMost(3)).getName();
     }
 
+    // Solution
+    @Test
+    public void shouldAtMostThreeTimesWhenChampionGetName() {
+        Champion champion = mock(Champion.class);
+        champion.setName("아지르");
+        champion.setPosition("미드");
+        champion.setHasSkinCount(3);
+
+        // Tip: Entering sout instead of System.out.println() will allow autocompletion.
+        System.out.println("Name :: " + champion.getName());
+        System.out.println("Name :: " + champion.getName());
+        System.out.println("Name :: " + champion.getName());
+        // System.out.println("Name :: " + champion.getName());
+
+        verify(champion, atMost(3)).getName();
+    }
+
+
     // 4-3. champion 객체에서 이름을 저장하는 로직이 실행되지 않았으면 Pass 하는 로직을 작성하세요.
+    // My Answer
+    @Test
+    public void shouldNeverSetChampionName() {
+        Champion champion = mock(Champion.class);
+        champion.setName("아지르");
+        champion.setPosition("미드");
+        champion.setHasSkinCount(3);
+
+        // How to verify methods that require arguments?
+        // verify(champion, atMost(0)).setName();
+        //verify(champion, never()).setName("");
+    }
 
     // 4-4. champion 객체에서 이름을 가져오는 로직이 200ms 시간 이내에 1번 실행되었는 지 검증하는 로직을 작성하세요.
 
