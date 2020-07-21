@@ -165,8 +165,25 @@ public class MockServiceTest {
 
         verify(champion, atLeast(2)).getName();
     }
-    
-    // 4-2. champion 객체에서 이름을 가져오는 로직이 최소 3번 이하 실행되면 Pass 하는 로직을 작성하세요.
+
+    // 4-2. champion 객체에서 이름을 가져오는 로직이 최대 3번 이하 실행되면 Pass 하는 로직을 작성하세요.
+    @Test
+    public void shouldMaxThreeTimesInvocationForGetChampionName() {
+        Champion champion = mock(Champion.class);
+        champion.setName("조이");
+        champion.setPosition("미드");
+        champion.setHasSkinCount(4);
+
+        System.out.println("Champion :: " + champion.getName());
+        System.out.println("Champion :: " + champion.getName());
+        System.out.println("Champion :: " + champion.getName());
+
+        // This will fail the test because it is a fourth invocation.
+        // System.out.println("Champion :: " + champion.getName());
+
+        // atMost(3) : 3 or less
+        verify(champion, atMost(3)).getName();
+    }
 
     // 4-3. champion 객체에서 이름을 저장하는 로직이 실행되지 않았으면 Pass 하는 로직을 작성하세요.
 
