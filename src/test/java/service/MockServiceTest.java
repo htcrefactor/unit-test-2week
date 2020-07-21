@@ -39,6 +39,7 @@ public class MockServiceTest {
 
     // 1. when, thenReturn을 사용하여 어떠한 챔피언 이름을 입력해도 베인을 리턴하도록 테스트하세요
     /*
+    // My Answer
     @Test
     public void 챔피언이름을입력하면_무조건_베인을_리턴한다() {
         Champion champion = mock(Champion.class);
@@ -49,12 +50,15 @@ public class MockServiceTest {
      */
 
 
-    // Answer
+    // Solution
     @Test
     public void shouldReturnVayneWhenAnyChampionName() {
         Champion champion = mock(Champion.class);
         champion.setName("티모");
         champion.setPosition("탑");
+
+        // This doen't work because you can't save values in a mock object.
+        System.out.println("Champion : " + champion.getName());
 
         when(champion.getName()).thenReturn("베인");
         assertThat(champion.getName(), is("베인"));
