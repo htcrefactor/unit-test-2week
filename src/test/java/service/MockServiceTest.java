@@ -128,6 +128,26 @@ public class MockServiceTest {
         verify(championList, times(1)).size();
     }
 
+    // Solution
+    @Test
+    public void confirmArraySizeCheck() {
+        // Better convention to use mockChampions then mockChampionList
+        List<Champion> mockChampions = mock(List.class);
+
+        Champion champion = mock(Champion.class);
+        champion.setName("유미");
+        champion.setPosition("서폿");
+        champion.setHasSkinCount(2);
+        mockChampions.add(champion);
+
+        // Mock object has no actual value.
+        // Hence, there is actually no size even after we add an object to the mock List.
+        // Harder to verify actual status of objects.
+        System.out.println("Size :: " + mockChampions.size());
+
+        verify(mockChampions, times(1)).size();
+    }
+
 
     // 4-1. champion 객체에서 이름을 가져오는 로직이 2번 이상 실행되면 Pass 하는 로직을 작성하세요.
 
