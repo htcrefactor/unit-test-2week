@@ -67,7 +67,18 @@ public class MockServiceTest {
 
 
     // 2. 챔피언 이름으로 야스오를 저장하면, doThrow를 사용하여 Exception이 발생하도록 테스트 하세요.
-    
+    /*
+    // My Answer
+    @Test
+    public void whenYasuoThrowException() {
+        Champion champion = mock(Champion.class);
+        champion.setName("야스오");
+        champion.setPosition("탑");
+
+        when(champion.getName())
+    }
+     */
+
 
     // 3. verify 를 사용하여 '미드' 포지션을 저장하는 프로세스가 진행되었는지 테스트 하세요.
 
