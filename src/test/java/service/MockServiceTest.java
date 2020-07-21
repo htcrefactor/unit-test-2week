@@ -231,7 +231,7 @@ public class MockServiceTest {
         // verify(champion, never()).setName("직스");
 
         // This is correct because setName("아지르") is a subset of possible setName(anyString()).
-        verify(champion, never()).setName(anyString())
+        verify(champion, never()).setName(anyString());
     }
 
     // 4-4. champion 객체에서 이름을 가져오는 로직이 200ms 시간 이내에 1번 실행되었는 지 검증하는 로직을 작성하세요.
