@@ -38,6 +38,7 @@ public class MockServiceTest {
     }
 
     // 1. when, thenReturn을 사용하여 어떠한 챔피언 이름을 입력해도 베인을 리턴하도록 테스트하세요
+    /*
     @Test
     public void 챔피언이름을입력하면_무조건_베인을_리턴한다() {
         Champion champion = mock(Champion.class);
@@ -45,9 +46,24 @@ public class MockServiceTest {
         assertThat(champion.getName(), is("베인"));
         System.out.println("Champion : " + champion.getName());
     }
+     */
+
+
+    // Answer
+    @Test
+    public void shouldReturnVayneWhenAnyChampionName() {
+        Champion champion = mock(Champion.class);
+        champion.setName("티모");
+        champion.setPosition("탑");
+
+        when(champion.getName()).thenReturn("베인");
+        assertThat(champion.getName(), is("베인"));
+        System.out.println("Champion : " + champion.getName());
+    }
+
 
     // 2. 챔피언 이름으로 야스오를 저장하면, doThrow를 사용하여 Exception이 발생하도록 테스트 하세요.
-
+    
 
     // 3. verify 를 사용하여 '미드' 포지션을 저장하는 프로세스가 진행되었는지 테스트 하세요.
 
