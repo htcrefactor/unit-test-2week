@@ -235,7 +235,18 @@ public class MockServiceTest {
     }
 
     // 4-4. champion 객체에서 이름을 가져오는 로직이 200ms 시간 이내에 1번 실행되었는 지 검증하는 로직을 작성하세요.
+    // Solution
+    @Test
+    public void shouldOnetimeInvocationIn200msForChampionGetName() {
+        Champion champion = mock(Champion.class);
+        champion.setName("트위스티드 페이트");
+        champion.setPosition("미드");
+        champion.setHasSkinCount(3);
 
+        System.out.println("챔피언 : " + champion.getName());
+
+        verify(champion, timeout(200).atLeastOnce()).getName();
+    }
 
     // ******************************************
     // injectmock test 연습
