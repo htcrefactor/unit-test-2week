@@ -98,6 +98,8 @@ public class MockServiceTest {
         champion.setPosition("미드");
         champion.setHasSkinCount(7);
 
+        champion.setName("말자하");
+
         // Verification is done post-declaration while when is done prior delcaration.
         verify(champion, times(1)).setPosition("미드");
         verify(champion, times(1)).setName("직스");
