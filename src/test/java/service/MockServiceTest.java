@@ -150,7 +150,22 @@ public class MockServiceTest {
 
 
     // 4-1. champion 객체에서 이름을 가져오는 로직이 2번 이상 실행되면 Pass 하는 로직을 작성하세요.
+    // Answer
+    @Test
+    public void shouldTwoTimesInvocationForGetChampionName() {
+        Champion champion = mock(Champion.class);
+        champion.setName("시비르");
+        champion.setPosition("원딜");
+        champion.setHasSkinCount(6);
 
+        System.out.println("Champion :: " + champion.getName());
+        System.out.println("Champion :: " + champion.getName());
+        System.out.println("Champion :: " + champion.getName());
+        System.out.println("Champion :: " + champion.getName());
+
+        verify(champion, atLeast(2)).getName();
+    }
+    
     // 4-2. champion 객체에서 이름을 가져오는 로직이 최소 3번 이하 실행되면 Pass 하는 로직을 작성하세요.
 
     // 4-3. champion 객체에서 이름을 저장하는 로직이 실행되지 않았으면 Pass 하는 로직을 작성하세요.
