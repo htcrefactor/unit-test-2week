@@ -222,7 +222,7 @@ public class MockServiceTest {
     @Test
     public void shouldNeverInvocationWhenChampionSetName() {
         Champion champion = mock(Champion.class);
-        champion.setName("아지르");
+        //champion.setName("아지르");
         champion.setPosition("미드");
         champion.setHasSkinCount(3);
 
