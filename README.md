@@ -1,4 +1,4 @@
-# unit-test-week1
+# unit-test-week2
 This is a personal repository for classwork done during RealCoding1 - Unit Testing class at Ajou University with Riot Games.
 
 ## Contents
