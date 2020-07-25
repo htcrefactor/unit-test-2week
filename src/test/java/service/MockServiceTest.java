@@ -103,7 +103,7 @@ public class MockServiceTest {
 
         champion.setName("말자하");
 
-        // Verification is done post-declaration while when is done prior delcaration.
+        // Verification is done post-declaration while when is done prior declaration.
         verify(champion, times(1)).setPosition("미드");
         verify(champion, times(1)).setName("직스");
 
